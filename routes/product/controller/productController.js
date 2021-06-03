@@ -11,6 +11,16 @@ module.exports = {
     });
   },
 
+  getProductByID: function (id, callback) {
+    Product.findById({ _id: id }, function (err, payload) {
+      if (err) {
+        callback(err, null);
+      } else {
+        callback(null, payload);
+      }
+    });
+  },
+
   createProduct: function (body, callback) {
     let savedProduct = new Product({
       productName: body.productName,
